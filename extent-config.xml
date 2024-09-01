@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<extentreports>
+    <configuration>
+        <!-- report theme -->
+        <!-- standard, dark -->
+        <theme>dark</theme>
+    
+        <!-- document encoding -->
+        <!-- defaults to UTF-8 -->
+        <encoding>UTF-8</encoding>
+        
+        <!-- protocol for script and stylesheets -->
+        <!-- defaults to https -->
+        <protocol>https</protocol>
+        
+                               
+        <reportName>
+			<![CDATA[
+			   <font style="font-size: large;padding-left:7px ;padding-right: 7px;vertical-align: baseline; color: #e67300">Pluralsight Automation Report</font>
+               <img src='https://www.pluralsight.com/content/dam/ps-nav-assets/product-logo/pluralsight-color-full-logo.png' style="background-color: transparent; height:25%; width:22%; vertical-align: middle;
+                padding-left:7px; padding-bottom:5px; "'/>
+			]]>
+		</reportName>
+		
+       
+        <!-- custom javascript -->
+        <scripts>
+            <![CDATA[
+            
+            ]]>
+        </scripts>
+        
+        <!-- custom styles -->
+        <styles>
+            <![CDATA[
+             
+            ]]>
+        </styles>
+    </configuration>
+</extentreports>
