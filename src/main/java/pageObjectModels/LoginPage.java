@@ -37,10 +37,7 @@ public class LoginPage extends BasePage{
 	public SearchPage pluralsightApplicationLogin(String username, String password) { //<T extends BasePage>T
 
 		// Wait till the login page is visible
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver,loginForm);
 		PlaywrightElementActions.waitForVisibility(page, loginForm);
-
-		//page.pause();
 
 		//Decrpyt & Enter Username 
 		enterUsername(EncryptDecrypt.decryptString(username));
@@ -50,9 +47,7 @@ public class LoginPage extends BasePage{
 
 		// Click on Login
 		clickLogin();
-
-		//Successfully logged in Puralsight application
-
+		logger.info("Successfully logged in Puralsight application");
 		return new SearchPage(page);
 	}
 
@@ -67,7 +62,6 @@ public class LoginPage extends BasePage{
 		refreshPage();
 
 		// Wait till the login page is visible
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver,loginForm);
 		PlaywrightElementActions.waitForVisibility(page, loginForm);
 
 		// Enter User name
@@ -94,7 +88,6 @@ public class LoginPage extends BasePage{
 	 */
 	public boolean checkHeaderRibbonIsVisible() {
 		boolean flag = false;
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, headerRibbonTextVisible, 15);
 		if(!PlaywrightElementActions.isVisible(page, headerRibbonTextVisible)) {
 			throw new RuntimeException("Header message is not visible");	
 		}
@@ -119,7 +112,6 @@ public class LoginPage extends BasePage{
 		boolean flag = false;
 		if(getHeaderRibbonText().equalsIgnoreCase("Invalid user name or password")) {
 			flag=true;
-			//WebElementUtility.explicitWaitForElementToBeInVisible(driver, headerRibbonTextVisible, 10);
 		}
 		return flag;
 	}
@@ -129,11 +121,8 @@ public class LoginPage extends BasePage{
 	 * @param userName
 	 */
 	public void enterUsername(String userName) {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, usernameBy, 10);
 		PlaywrightElementActions.clearText(page, username);
 		PlaywrightElementActions.typeText(page,username,userName);
-
-		//page.locator(username).fill(userName);
 	}
 
 	/**
@@ -141,7 +130,6 @@ public class LoginPage extends BasePage{
 	 * @param password
 	 */
 	public void enterPassword(String pwd) {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, passwordBy, 10);
 		PlaywrightElementActions.clearText(page, password);
 		PlaywrightElementActions.typeText(page, password, pwd);
 	}

@@ -26,7 +26,6 @@ public class HomePage extends BasePage{
 	 */
 	public String getHomePageHeader() {
 		customWaitInSec(1);
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, homePageHeader, 15);
 		return PlaywrightElementActions.getText(page, homePageHeader).trim();
 	}
 	
@@ -35,7 +34,6 @@ public class HomePage extends BasePage{
 	 * @return
 	 */
 	public String getHomePageDescription() {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, homePageDescription, 15);
 		return removeEscapeSequences(PlaywrightElementActions.getText(page, homePageDescription));
 	}
 	

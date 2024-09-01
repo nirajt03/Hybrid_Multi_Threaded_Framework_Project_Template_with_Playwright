@@ -37,8 +37,6 @@ public class CoursePage extends BasePage {
 	 * @return
 	 */
 	public String getCourseDescription() {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, courseDescription, 15);
-
 		return removeEscapeSequences(PlaywrightElementActions.getText(page,courseDescription));
 	}
 
@@ -56,7 +54,6 @@ public class CoursePage extends BasePage {
 	 * @return
 	 */
 	public String getFreeTrailButtonText() {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, freeTrailBtn, 15);
 		return PlaywrightElementActions.getText(page, freeTrailBtn);
 	}
 
@@ -65,7 +62,6 @@ public class CoursePage extends BasePage {
 	 * @return
 	 */
 	public String getCourseOverviewButtonText() {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, playCourseOverviewBtn, 15);
 		return PlaywrightElementActions.getText(page, playCourseOverviewBtn);
 	}
 
@@ -74,7 +70,6 @@ public class CoursePage extends BasePage {
 	 * @return
 	 */
 	public SearchPage moveToSearchpage() {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, coursesLink, 10);
 		PlaywrightElementActions.click(page, coursesLink);
 		customWaitInSec(2);
 		return new SearchPage(page);

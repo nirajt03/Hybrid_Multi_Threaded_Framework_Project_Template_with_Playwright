@@ -21,16 +21,16 @@ public class SearchPage  extends BasePage{
 	}
 
 	//Filters option
-	private String filtersTab = "//div[@id='Filters']";	
+	//private String filtersTab = "//div[@id='Filters']";	
 
 	//Courses tab
-	private String coursesTab = "//div[@id='courses_tabs']";
+	//private String coursesTab = "//div[@id='courses_tabs']";
 
 	private String clearActiveAllTabs = "//a[text()='All']//parent::li[contains(@class,'ui-tabs-active')]";
 	private String clearAllTabs = "//a[text()='All']//parent::li[not(contains(@class,'ui-tabs-active'))]";
 	
 	//private String activeCourseTab = "//a[text()='Courses']//parent::li[contains(@class,'ui-tabs-active')]";
-	private String courseTabBlockVisible = "//div[@id='tabs']//div[@id='tabs-2' and @style='display: block;']";
+	//private String courseTabBlockVisible = "//div[@id='tabs']//div[@id='tabs-2' and @style='display: block;']";
 	//private String courseTabBlockInvisible = "//div[@id='tabs']//div[@id='tabs-2' and @style='display: none;']";
 
 
@@ -78,10 +78,8 @@ public class SearchPage  extends BasePage{
 	 */
 	public void selectRequiredFilterTab(SearchPageFilterTags filterTag) {
 		customWaitInSec(1);
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, filtersTab, 10);
 		String filterTagValue = filterTag.getSearchPageFilterTagName();
 		String filterTagDiv = "//div[text()='"+filterTagValue+"']";
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, filterTagDiv, 10);
 		PlaywrightElementActions.waitForVisibility(page, filterTagDiv);
 		PlaywrightElementActions.click(page, filterTagDiv);
 	}
@@ -109,7 +107,6 @@ public class SearchPage  extends BasePage{
 		String filterTagValue = filterTag.getSearchPageFilterTagName();
 		checkSelectedFilterHeaderActive(filterTagValue);		
 		String filterTagDiv = "//div[text()='"+filterTagValue+"']//ancestor::h3[contains(@class,'ui-accordion-header-active')]//following-sibling::div[contains(@class,'ui-accordion-content-active')]//span";
-		//List<WebElement> listOfSelectedFilterBy = driver.findElements(filterTagDiv);
 		return PlaywrightElementActions.getAllInnerText(page, filterTagDiv);
 	}
 
@@ -125,7 +122,6 @@ public class SearchPage  extends BasePage{
 		PlaywrightElementActions.waitForVisibility(page, activeFilterHeader);
 		PlaywrightElementActions.click(page, activeFilterHeader);
 		String collapsedFilterHeader = "//div[.='"+filterTagName+"']//parent::h3[contains(@class,'accordion-header-collapsed')]";
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, collapsedFilterHeader, 10);
 		PlaywrightElementActions.waitForVisibility(page, collapsedFilterHeader);
 		if(!PlaywrightElementActions.isVisible(page, collapsedFilterHeader)) {
 			throw new RuntimeException("Element not found");
@@ -140,10 +136,8 @@ public class SearchPage  extends BasePage{
 	 * @param requiredTab
 	 */
 	public void selectRequiredTabInNavBar(SearchPageNavBarListTabs requiredTab) {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, coursesTab, 10);
 		String navBartabValue = requiredTab.getSearchPageNavBarListTabName();
 		String navBarTabDiv = "//div[@id='courses_tabs']//a[text()='"+navBartabValue+"']";
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, navBarTabDiv, 10);
 		PlaywrightElementActions.click(page, navBarTabDiv);
 	}
 
@@ -152,8 +146,6 @@ public class SearchPage  extends BasePage{
 	 */
 	public void clickCourseTabDetails() {
 		selectRequiredTabInNavBar(SearchPageNavBarListTabs.Courses);
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, courseTabBlockVisible, 10);
-		//PlaywrightElementActions.waitForVisibility(page, courseTabBlockVisible);
 	}
 
 	/**
@@ -162,8 +154,6 @@ public class SearchPage  extends BasePage{
 	 * @return
 	 */
 	public int getCoursesListDetailsCount(String xpath) {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, xpath, 10);
-		//List<WebElement> listOfXpathWE = driver.findElements(xpath);
 		return PlaywrightElementActions.getElementCount(page, xpath);
 	}
 
@@ -173,12 +163,10 @@ public class SearchPage  extends BasePage{
 	 */
 	public List<String> getCoursesListDetails() {
 		List<String> listOfCourseDetails = new ArrayList<String>();
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, courseTabBlockVisible, 10);
 		String coursesList = "(//div[contains(@class,'search-results-rows')]//div[contains(@class,'columns')])";
 		int totalCourses = getCoursesListDetailsCount(coursesList);
 		for (int i = 1; i < totalCourses; i++) {
 			String courseTitleBy = "(//div[contains(@class,'columns')]//div[contains(@class,'title')])["+i+"]";
-			//WebElementUtility.moveToElement(driver, driver.findElement(courseTitleBy));
 			PlaywrightElementActions.hoverOverElement(page, courseTitleBy);
 			String courseTitle = PlaywrightElementActions.getText(page, courseTitleBy).trim();
 		    listOfCourseDetails.add(courseTitle);			
@@ -210,12 +198,10 @@ public class SearchPage  extends BasePage{
 	public void clearAllTabs() {	
 		customWaitInSec(2);
 		if(PlaywrightElementActions.isVisible(page, clearActiveAllTabs)) {
-			//WebElementUtility.explicitWaitForElementToBeVisible(driver, clearActiveAllTabs, 10);
 			PlaywrightElementActions.waitForVisibility(page, clearActiveAllTabs);
 			PlaywrightElementActions.hoverOverElement(page, clearActiveAllTabs);
 			PlaywrightElementActions.click(page, clearActiveAllTabs);
 		}else {
-			//WebElementUtility.explicitWaitForElementToBeVisible(driver, clearAllTabs, 10);
 			PlaywrightElementActions.waitForVisibility(page, clearAllTabs);
 			PlaywrightElementActions.hoverOverElement(page, clearAllTabs);
 			PlaywrightElementActions.click(page, clearAllTabs);
@@ -228,7 +214,6 @@ public class SearchPage  extends BasePage{
 	 */
 	public void clickOnRequiredCourse(String courseName) {
 		String courseTitleBy = "(//div[contains(@class,'columns')]//div[contains(@class,'title')]//a[text()='"+courseName+"'])";
-		//WebElementUtility.explicitWaitForElementToBeVisible(page, courseTitleBy, 10);
 		PlaywrightElementActions.click(page, courseTitleBy);
 	}
 	

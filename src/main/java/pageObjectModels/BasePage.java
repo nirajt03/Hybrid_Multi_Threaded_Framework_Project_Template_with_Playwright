@@ -62,7 +62,7 @@ public abstract class BasePage {
 		PlaywrightElementActions.click(page, logoutIcon);
 		logger.info("Logout button clicked");
 	
-		//handleAlert();
+	
 		logger.info("Successfully Logged Out from Pluralsight application");
 		return (new LoginPage(page));
 	}
@@ -72,7 +72,6 @@ public abstract class BasePage {
 	 * @param courseToBeSearched
 	 */
 	public void searchRequiredCourseInSearchBox(String courseToBeSearched) {
-		//WebElementUtility.explicitWaitForElementToBeVisible(driver, headerSearchBox, 10);
 		PlaywrightElementActions.typeText(page, headerSearchBox, courseToBeSearched);
 		PlaywrightElementActions.pressKey(page, headerSearchBox, "Enter");
 	}
@@ -83,7 +82,6 @@ public abstract class BasePage {
 	 */
 	public String getSiteHeaderText() {
 		return PlaywrightElementActions.getText(page, pluralsightIcon);
-		//WebElementUtility.getAttributeByValue(driver, driver.findElement(pluralsightIcon));
 	}
 
 	/**
@@ -92,7 +90,6 @@ public abstract class BasePage {
 	 */
 	public String getCourseLinkText() {
 		return PlaywrightElementActions.getText(page, coursesLink);
-		//return WebElementUtility.getAttributeByValue(driver, driver.findElement(coursesLink));
 	}
 
 	/**
@@ -101,7 +98,6 @@ public abstract class BasePage {
 	 */
 	public String getSearchPlaceholderText() {
 		return PlaywrightElementActions.getAttributeValue(page, headerSearchBox,"placeholder");
-		//return WebElementUtility.getAttributeUsingValue(driver, driver.findElement(headerSearchBox),"placeholder");
 	}
 
 	/**
@@ -110,7 +106,6 @@ public abstract class BasePage {
 	 */
 	public String getStartedIconText() {
 		return PlaywrightElementActions.getText(page, headerSearchBox);
-		//return WebElementUtility.getAttributeByValue(driver, driver.findElement(headerSearchBox));
 	}
 
 
